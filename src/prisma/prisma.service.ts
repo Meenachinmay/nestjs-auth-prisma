@@ -7,10 +7,20 @@ export class PrismaService
   implements OnModuleInit, OnModuleDestroy
 {
   constructor() {
-    super();
+    super({
+      datasources: {
+        db: {
+          url: 'postgresql://postgres:123@localhost:5432/socket-backend?schema=public',
+        },
+      },
+    });
   }
 
-  onModuleDestroy() {}
+  async onModuleDestroy() {
+    await this.$connect();
+  }
 
-  onModuleInit() {}
+  async onModuleInit() {
+    await this.$disconnect();
+  }
 }
