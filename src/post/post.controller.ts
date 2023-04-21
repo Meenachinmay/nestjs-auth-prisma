@@ -3,7 +3,7 @@ import { PostService } from './post.service';
 import { PostType } from './types/post.type';
 import { PostDto } from './dto/index.dto';
 
-@Controller('post')
+@Controller('/posts')
 export class PostController {
   constructor(private readonly postService: PostService) { }
 
