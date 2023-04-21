@@ -15,11 +15,66 @@ model User {
   id   Int    @id @default(autoincrement())
   name String
 
-  email     String @unique
+  email     String   @unique
   hash      String
   hashedRt  String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("users")
+}
+
+// defining table for virtual-space user
+// here define a relation of userId with id column in users table
+model LoggedInUser {
+  id Int @id @default(autoincrement())
+
+  userId       Int
+  name         String
+  email        String
+  profileImage String
+  companyName  String
+  status       String
+  xPos         Int
+  yPos         Int
+  spaceId      String
+  accessKey    String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("logged-in-users")
+}
+
+model UserProfile {
+  id             Int      @id @default(autoincrement())
+  userId         Int
+  companyName    String
+  companyProfile String
+  workProfile    String
+  profileImage   String
+  spaceId        String
+  pet            String
+  hobbies        String
+  pr             String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Space {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  bgImage   String
+  accessKey String
+  sizeX     Int?
+  sizey     Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Post {
+  id          Int    @id @default(autoincrement())
+  title       String
+  description String
+  author      String
 }
