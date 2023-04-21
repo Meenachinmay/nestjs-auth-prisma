@@ -5,7 +5,7 @@ import { PostDto } from './dto/index.dto';
 
 @Controller('post')
 export class PostController {
-  constructor(private readonly postService: PostService) {}
+  constructor(private readonly postService: PostService) { }
 
   // get many posts
   @Get('/get')
