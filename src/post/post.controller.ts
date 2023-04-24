@@ -1,11 +1,11 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { PostDto } from './dto/index.dto';
 import { PostService } from './post.service';
 import { PostType } from './types/post.type';
-import { PostDto } from './dto/index.dto';
 
 @Controller('/posts')
 export class PostController {
-  constructor(private readonly postService: PostService) { }
+  constructor(private readonly postService: PostService) {}
 
   // get many posts
   @Get('/get')
@@ -17,12 +17,6 @@ export class PostController {
   @Get('/get-one')
   getOnePost(): Promise<PostType> {
     return this.postService.getOnePost();
-  }
-
-  // get one post only
-  @Get('/get-one/:id')
-  getOnePostWithId(@Param() id: number): Promise<PostType> {
-    return this.postService.getOnePostWithId(id);
   }
 
   @Post('/create')

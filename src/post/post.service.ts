@@ -20,14 +20,6 @@ export class PostService {
     };
   }
 
-  async getOnePostWithId(id: number): Promise<PostType> {
-    return await this.prismeService.post.findUnique({
-      where: {
-        id: 1,
-      },
-    });
-  }
-
   async createPost(postDto: PostDto): Promise<PostType> {
     const post = await this.prismeService.post.create({
       data: {

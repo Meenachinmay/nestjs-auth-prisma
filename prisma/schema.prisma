@@ -73,7 +73,7 @@ model Space {
 }
 
 model Post {
-  id          Int    @id @default(autoincrement())
+  id          Int   @unique @id @default(autoincrement())
   title       String
   description String
   author      String
